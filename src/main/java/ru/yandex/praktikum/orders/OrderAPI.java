@@ -19,10 +19,11 @@ public class OrderAPI extends Service {
     }
 
     public Response cancelOrder(String orderId) {
+        String orderData = "{ \"track\": " + orderId + "}";
         return given()
                 .spec(getBaseSpecification())
                 .and()
-                .body(orderId)
+                .body(orderData)
                 .when()
                 .put(ORDER_CANCEL_API_PATH);
     }

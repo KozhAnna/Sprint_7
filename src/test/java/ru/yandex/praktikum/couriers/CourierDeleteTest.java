@@ -17,7 +17,6 @@ public class CourierDeleteTest {
 
     private final CourierAPI courierApi = new CourierAPI();
     private final CourierData courierData = new CourierData();
-    private final static boolean detailedLog = true;
     private Courier courierRandom;
 
     @Before
@@ -53,14 +52,14 @@ public class CourierDeleteTest {
     @Step("Create courier")
     public void courierCreate(Courier courier){
         Response response = courierApi.create(courier);
-        printResponseBodyToConsole("Создание курьера: ", response, detailedLog);
+        printResponseBodyToConsole("Создание курьера: ", response, Service.NEED_DETAIL_LOG);
     }
 
     // Метод для шага "Авторизация курьера":
-    @Step("Create courier")
+    @Step("Login courier")
     public Response courierLogin(Courier courier){
         Response response = courierApi.login(courier);
-        printResponseBodyToConsole("Авторизация курьера: ", response, detailedLog);
+        printResponseBodyToConsole("Авторизация курьера: ", response, Service.NEED_DETAIL_LOG);
         return response;
     }
 
@@ -68,7 +67,7 @@ public class CourierDeleteTest {
     @Step("Delete courier by id")
     public Response courierDelete(String courierId){
         Response response = courierApi.delete(courierId);
-        printResponseBodyToConsole("Удаление курьера: ", response, detailedLog);
+        printResponseBodyToConsole("Удаление курьера: ", response, Service.NEED_DETAIL_LOG);
         return response;
     }
 

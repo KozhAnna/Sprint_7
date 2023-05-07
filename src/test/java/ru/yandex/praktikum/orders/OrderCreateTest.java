@@ -21,7 +21,6 @@ public class OrderCreateTest {
 
     private final List<String> color;
     private final OrderAPI orderApi = new OrderAPI();
-    private final static boolean detailedLog = true;
     private Order order;
     private Response response;
 
@@ -49,7 +48,7 @@ public class OrderCreateTest {
     public void tearDown() {
         try {
             String orderId = response.then().extract().path("track").toString();
-            // orderApi.cancelOrder(orderId);
+            orderApi.cancelOrder(orderId);
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -65,10 +64,10 @@ public class OrderCreateTest {
     }
 
     // Метод для шага "Создание заказа":
-    @Step("Create courier")
+    @Step("Create order")
     public Response orderCreate(Order order){
         response = orderApi.createOrder(order);
-        printResponseBodyToConsole("Создание заказа: ", response, detailedLog);
+        printResponseBodyToConsole("Создание заказа: ", response, Service.NEED_DETAIL_LOG);
         return response;
     }
 
