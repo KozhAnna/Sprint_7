@@ -10,6 +10,17 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Other folders
+.DS_Store
+.idea/
+/.allure
+/target/classes
+/target/generated-sources
+/target/generated-test-sources
+/target/maven-status
+/target/surefire-reports
+/target/test-classes
+
 # Package Files #
 *.jar
 *.war
